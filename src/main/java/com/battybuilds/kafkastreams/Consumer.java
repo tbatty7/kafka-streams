@@ -2,12 +2,11 @@ package com.battybuilds.kafkastreams;
 
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.annotation.StreamListener;
-import org.springframework.cloud.stream.messaging.Sink;
 
-@EnableBinding(Sink.class)
+@EnableBinding(MessageStreams.class)
 public class Consumer {
 
-    @StreamListener(Sink.INPUT)
+    @StreamListener(MessageStreams.STREAM_ONE)
     public void streamHandler(String log) {
         System.out.println(log);
     }
