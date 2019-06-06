@@ -1,15 +1,14 @@
 package com.battybuilds.kafkastreams.avro.model;
 
-import org.apache.avro.io.DatumWriter;
-import org.apache.avro.io.Encoder;
-import org.apache.avro.io.EncoderFactory;
+import org.apache.avro.io.*;
+import org.apache.avro.specific.SpecificDatumReader;
 import org.apache.avro.specific.SpecificDatumWriter;
 
 import java.io.ByteArrayOutputStream;
 
 public class AvroSerDes {
 
-    public byte[] serealizeAvroHttpRequestJSON(AvroHttpRequest request) {
+    public byte[] serializeAvroHttpRequest(AvroHttpRequest request) {
         DatumWriter<AvroHttpRequest> writer = new SpecificDatumWriter<>(AvroHttpRequest.class);
         byte[] data = new byte[0];
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
@@ -24,5 +23,18 @@ public class AvroSerDes {
         }
 
         return data;
+    }
+
+
+    public AvroHttpRequest deserializeAvroHttpRequest(byte[] message) {
+        DatumReader<AvroHttpRequest> reader = new SpecificDatumReader<>(AvroHttpRequest.class);
+        Decoder decoder;
+        try {
+            decoder = DecoderFactory.get().jsonDecoder(AvroHttpRequest.getClassSchema(), new String(message));
+            return reader.read(null, decoder);
+        } catch (Exception e) {
+            System.out.println("Deserialization error: " + e.getMessage());
+            return null;
+        }
     }
 }
