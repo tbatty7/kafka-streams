@@ -7,7 +7,8 @@ import org.springframework.cloud.stream.annotation.StreamListener;
 public class Consumer {
 
     @StreamListener(MessageStreams.STREAM_ONE)
-    public void streamHandler(String log) {
+    public void streamHandler(byte[] log) {
         System.out.println(log);
+        System.out.println(log.length);
     }
 }
