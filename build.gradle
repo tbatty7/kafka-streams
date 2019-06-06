@@ -53,6 +53,14 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation('org.apache.avro:avro:1.8.2')
 	compileOnly('org.apache.avro:avro-tools:1.8.2')
+
+	implementation('com.fasterxml.jackson.core:jackson-annotations')
+	implementation('com.fasterxml.jackson.core:jackson-core')
+	implementation('com.fasterxml.jackson.core:jackson-databind')
+	implementation('com.fasterxml.jackson.datatype:jackson-datatype-jdk8')
+	implementation('com.fasterxml.jackson.datatype:jackson-datatype-joda')
+	implementation('com.fasterxml.jackson.datatype:jackson-datatype-jsr310')
+	
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
 	testImplementation('org.springframework.cloud:spring-cloud-stream-test-support')
 	testImplementation('org.springframework.kafka:spring-kafka-test')
