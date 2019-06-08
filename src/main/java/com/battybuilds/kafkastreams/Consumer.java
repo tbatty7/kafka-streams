@@ -1,7 +1,6 @@
 package com.battybuilds.kafkastreams;
 
 import com.battybuilds.kafkastreams.avro.model.AvroHttpRequest;
-import com.battybuilds.kafkastreams.avro.model.AvroSerDes;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.annotation.StreamListener;
 
