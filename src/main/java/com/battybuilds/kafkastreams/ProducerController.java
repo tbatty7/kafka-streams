@@ -6,6 +6,7 @@ import com.battybuilds.kafkastreams.avro.model.AvroHttpRequest;
 import com.battybuilds.kafkastreams.avro.model.ClientIdentifier;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.integration.support.MessageBuilder;
+import org.springframework.messaging.MessageChannel;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,11 +16,11 @@ import java.util.Arrays;
 @EnableBinding(MessageStreams.class)
 public class ProducerController {
 
-    private final MessageStreams channels;
+    private final MessageChannel outputChannel;
     private AvroSerDes serDes;
 
-    public ProducerController(MessageStreams messageStreams, AvroSerDes serDes) {
-        this.channels = messageStreams;
+    public ProducerController(MessageChannel outputStream, AvroSerDes serDes) {
+        this.outputChannel = outputStream;
         this.serDes = serDes;
     }
 
@@ -28,7 +29,7 @@ public class ProducerController {
         AvroHttpRequest request = createAvroHttpRequest();
 
         byte[] serializedRequest = serDes.serializeBinary(request);
-        channels.outputStream().send(MessageBuilder.withPayload(serializedRequest).build());
+        outputChannel.send(MessageBuilder.withPayload(serializedRequest).build());
         System.out.println("Message Sent!");
         return "message_published";
     }
