@@ -1,5 +1,6 @@
 package com.battybuilds.kafkastreams.avro.model;
 
+import com.battybuilds.kafkastreams.AvroSerDes;
 import org.junit.Test;
 
 import java.util.Arrays;

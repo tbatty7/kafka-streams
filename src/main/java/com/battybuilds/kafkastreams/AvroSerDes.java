@@ -1,5 +1,6 @@
-package com.battybuilds.kafkastreams.avro.model;
+package com.battybuilds.kafkastreams;
 
+import com.battybuilds.kafkastreams.avro.model.AvroHttpRequest;
 import org.apache.avro.io.*;
 import org.apache.avro.specific.SpecificDatumReader;
 import org.apache.avro.specific.SpecificDatumWriter;
