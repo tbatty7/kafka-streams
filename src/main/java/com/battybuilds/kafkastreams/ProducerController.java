@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Arrays;
 
 @RestController
+@EnableBinding(MessageStreams.class)
 public class ProducerController {
 
     private final MessageChannel outputChannel;
