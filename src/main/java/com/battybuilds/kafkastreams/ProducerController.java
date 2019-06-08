@@ -10,12 +10,17 @@ import org.springframework.web.bind.annotation.RestController;
 @EnableBinding(MessageStreams.class)
 public class ProducerController {
 
-    @Autowired
-    private MessageStreams messageChannels;
+    private final MessageStreams messageChannels;
+
+    public ProducerController(MessageStreams messageChannels) {
+        this.messageChannels = messageChannels;
+    }
 
     @GetMapping("/send")
     public String sendMessage() {
-        messageChannels.outputStream().send(MessageBuilder.withPayload("hello").build());
+
+        String messageString = "hello";
+        messageChannels.outputStream().send(MessageBuilder.withPayload(messageString).build());
         System.out.println("Message Sent!");
         return "order_published";
     }
