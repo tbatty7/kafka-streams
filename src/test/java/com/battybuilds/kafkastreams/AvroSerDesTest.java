@@ -1,6 +1,8 @@
-package com.battybuilds.kafkastreams.avro.model;
+package com.battybuilds.kafkastreams;
 
 import com.battybuilds.kafkastreams.AvroSerDes;
+import com.battybuilds.kafkastreams.avro.model.AvroHttpRequest;
+import com.battybuilds.kafkastreams.avro.model.ClientIdentifier;
 import org.junit.Test;
 
 import java.util.Arrays;
