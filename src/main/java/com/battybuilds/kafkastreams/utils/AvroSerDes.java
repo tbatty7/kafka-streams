@@ -12,13 +12,14 @@ import java.io.IOException;
 @Component
 public class AvroSerDes {
 
-    public byte[] serializeAvroHttpRequest(AvroHttpRequest request) {
+    public byte[] serializeJson(AvroHttpRequest request) {
         DatumWriter<AvroHttpRequest> writer = new SpecificDatumWriter<>(AvroHttpRequest.class);
         byte[] data = new byte[0];
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         Encoder jsonEncoder = null;
         try {
-            jsonEncoder = EncoderFactory.get().jsonEncoder(AvroHttpRequest.getClassSchema(), stream);
+            jsonEncoder = EncoderFactory.get()
+                    .jsonEncoder(AvroHttpRequest.getClassSchema(), stream);
             writer.write(request, jsonEncoder);
             jsonEncoder.flush();
             data = stream.toByteArray();
@@ -30,11 +31,12 @@ public class AvroSerDes {
     }
 
 
-    public AvroHttpRequest deserializeAvroHttpRequest(byte[] message) {
+    public AvroHttpRequest deserializeJson(byte[] message) {
         DatumReader<AvroHttpRequest> reader = new SpecificDatumReader<>(AvroHttpRequest.class);
         Decoder decoder;
         try {
-            decoder = DecoderFactory.get().jsonDecoder(AvroHttpRequest.getClassSchema(), new String(message));
+            decoder = DecoderFactory.get()
+                    .jsonDecoder(AvroHttpRequest.getClassSchema(), new String(message));
             return reader.read(null, decoder);
         } catch (Exception e) {
             System.out.println("Deserialization error: " + e.getMessage());
@@ -42,7 +44,7 @@ public class AvroSerDes {
         }
     }
 
-    public byte[] serealizeAvroHttpRequestBinary(AvroHttpRequest request) {
+    public byte[] serializeBinary(AvroHttpRequest request) {
         DatumWriter<AvroHttpRequest> writer = new SpecificDatumWriter<>(AvroHttpRequest.class);
         byte[] data = new byte[0];
         ByteArrayOutputStream stream = new ByteArrayOutputStream();

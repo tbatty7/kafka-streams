@@ -1,6 +1,5 @@
 package com.battybuilds.kafkastreams.utils;
 
-import com.battybuilds.kafkastreams.utils.AvroSerDes;
 import com.battybuilds.kafkastreams.avro.model.AvroHttpRequest;
 import com.battybuilds.kafkastreams.avro.model.ClientIdentifier;
 import org.junit.Test;
@@ -17,7 +16,7 @@ public class AvroSerDesTest {
     @Test
     public void canSerializeRequestToByteArray() {
         AvroHttpRequest request = createAvroHttpRequest();
-        byte[] bytes = avroSerDes.serializeAvroHttpRequest(request);
+        byte[] bytes = avroSerDes.serializeJson(request);
         String expectedJSON = "{\"requestTime\":10,\"clientIdentifier\":{\"hostName\":\"hostName\",\"ipAddress\":\"127.0.0.1\"},\"employeeNames\":[\"Tim\",\"Jessica\",\"Mike\"]}";
         assertEquals(expectedJSON, new String(bytes));
     }
@@ -25,8 +24,8 @@ public class AvroSerDesTest {
     @Test
     public void canDeserializeAvroRequest() {
         AvroHttpRequest request = createAvroHttpRequest();
-        byte[] serializedMessage = avroSerDes.serializeAvroHttpRequest(request);
-        AvroHttpRequest deserializedRequest = avroSerDes.deserializeAvroHttpRequest(serializedMessage);
+        byte[] serializedMessage = avroSerDes.serializeJson(request);
+        AvroHttpRequest deserializedRequest = avroSerDes.deserializeJson(serializedMessage);
         assertEquals(request, deserializedRequest);
         assertEquals(hostName(request), hostName(deserializedRequest).toString());
         System.out.println(deserializedRequest.toString());
@@ -35,7 +34,7 @@ public class AvroSerDesTest {
     @Test
     public void canDeserializeFromBinary() {
         AvroHttpRequest request = createAvroHttpRequest();
-        byte[] serializedMessage = avroSerDes.serealizeAvroHttpRequestBinary(request);
+        byte[] serializedMessage = avroSerDes.serializeBinary(request);
         AvroHttpRequest deserializedRequest = avroSerDes.deserializeBinary(serializedMessage);
         assertEquals(request, deserializedRequest);
     }

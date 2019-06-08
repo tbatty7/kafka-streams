@@ -15,11 +15,11 @@ import java.util.Arrays;
 @EnableBinding(MessageStreams.class)
 public class ProducerController {
 
-    private final MessageStreams messageChannels;
+    private final MessageStreams channels;
     private AvroSerDes serDes;
 
-    public ProducerController(MessageStreams messageChannels, AvroSerDes serDes) {
-        this.messageChannels = messageChannels;
+    public ProducerController(MessageStreams messageStreams, AvroSerDes serDes) {
+        this.channels = messageStreams;
         this.serDes = serDes;
     }
 
@@ -27,10 +27,10 @@ public class ProducerController {
     public String sendMessage() {
         AvroHttpRequest request = createAvroHttpRequest();
 
-        byte[] serializedRequest = serDes.serealizeAvroHttpRequestBinary(request);
-        messageChannels.outputStream().send(MessageBuilder.withPayload(serializedRequest).build());
+        byte[] serializedRequest = serDes.serializeBinary(request);
+        channels.outputStream().send(MessageBuilder.withPayload(serializedRequest).build());
         System.out.println("Message Sent!");
-        return "order_published";
+        return "message_published";
     }
 
     private AvroHttpRequest createAvroHttpRequest() {
