@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import java.util.Arrays;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class AvroSerDesTest {
 
@@ -15,7 +15,8 @@ public class AvroSerDesTest {
     public void canSerializeRequestToByteArray() {
         AvroHttpRequest request = createAvroHttpRequest();
         byte[] bytes = avroSerDes.serializeAvroHttpRequest(request);
-        assertEquals(141, bytes.length);
+        String expectedJSON = "{\"requestTime\":10,\"clientIdentifier\":{\"hostName\":\"hostName\",\"ipAddress\":\"127.0.0.1\"},\"employeeNames\":[\"Tim\",\"Jessica\",\"Mike\"]}";
+        assertEquals(expectedJSON, new String(bytes));
     }
 
     @Test
@@ -25,6 +26,15 @@ public class AvroSerDesTest {
         AvroHttpRequest deserializedRequest = avroSerDes.deserializeAvroHttpRequest(serializedMessage);
         assertEquals(request, deserializedRequest);
         assertEquals(hostName(request), hostName(deserializedRequest).toString());
+        System.out.println(deserializedRequest.toString());
+    }
+
+    @Test
+    public void canDeserializeFromBinary() {
+        AvroHttpRequest request = createAvroHttpRequest();
+        byte[] serializedMessage = avroSerDes.serealizeAvroHttpRequestBinary(request);
+        AvroHttpRequest deserializedRequest = avroSerDes.deserializeBinary(serializedMessage);
+        assertEquals(request, deserializedRequest);
     }
 
     private CharSequence hostName(AvroHttpRequest request) {
@@ -41,7 +51,6 @@ public class AvroSerDesTest {
                 .setClientIdentifier(clientIdentifier)
                 .setEmployeeNames(Arrays.asList("Tim", "Jessica", "Mike"))
                 .setRequestTime(10L)
-                .setActive(Active.YES)
                 .build();
     }
 }

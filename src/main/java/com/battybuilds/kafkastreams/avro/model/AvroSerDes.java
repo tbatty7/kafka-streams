@@ -5,6 +5,7 @@ import org.apache.avro.specific.SpecificDatumReader;
 import org.apache.avro.specific.SpecificDatumWriter;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 
 public class AvroSerDes {
 
@@ -36,5 +37,34 @@ public class AvroSerDes {
             System.out.println("Deserialization error: " + e.getMessage());
             return null;
         }
+    }
+
+    public byte[] serealizeAvroHttpRequestBinary(AvroHttpRequest request) {
+        DatumWriter<AvroHttpRequest> writer = new SpecificDatumWriter<>(AvroHttpRequest.class);
+        byte[] data = new byte[0];
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        Encoder jsonEncoder = EncoderFactory.get()
+                .binaryEncoder(stream, null);
+        try {
+            writer.write(request, jsonEncoder);
+            jsonEncoder.flush();
+            data = stream.toByteArray();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return data;
+    }
+
+    public AvroHttpRequest deserializeBinary(byte[] data) {
+        DatumReader<AvroHttpRequest> employeeReader = new SpecificDatumReader<>(AvroHttpRequest.class);
+        Decoder decoder = DecoderFactory.get()
+                .binaryDecoder(data, null);
+        try {
+            return employeeReader.read(null, decoder);
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
     }
 }
