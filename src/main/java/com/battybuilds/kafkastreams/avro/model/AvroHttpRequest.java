@@ -13,8 +13,8 @@ import org.apache.avro.message.SchemaStore;
 @SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
 public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 2372008452242038626L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"AvroHttpRequest\",\"namespace\":\"com.battybuilds.kafkastreams.avro.model\",\"fields\":[{\"name\":\"requestTime\",\"type\":\"long\"},{\"name\":\"clientIdentifier\",\"type\":{\"type\":\"record\",\"name\":\"ClientIdentifier\",\"fields\":[{\"name\":\"hostName\",\"type\":\"string\"},{\"name\":\"ipAddress\",\"type\":\"string\"}]}},{\"name\":\"employeeNames\",\"type\":{\"type\":\"array\",\"items\":\"string\"},\"default\":null},{\"name\":\"active\",\"type\":{\"type\":\"enum\",\"name\":\"Active\",\"symbols\":[\"YES\",\"NO\"]}}]}");
+  private static final long serialVersionUID = 6334785405143308218L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"AvroHttpRequest\",\"namespace\":\"com.battybuilds.kafkastreams.avro.model\",\"fields\":[{\"name\":\"requestTime\",\"type\":\"long\"},{\"name\":\"clientIdentifier\",\"type\":{\"type\":\"record\",\"name\":\"ClientIdentifier\",\"fields\":[{\"name\":\"hostName\",\"type\":\"string\"},{\"name\":\"ipAddress\",\"type\":\"string\"}]}},{\"name\":\"employeeNames\",\"type\":{\"type\":\"array\",\"items\":\"string\"},\"default\":null}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -54,7 +54,6 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
   @Deprecated public long requestTime;
   @Deprecated public com.battybuilds.kafkastreams.avro.model.ClientIdentifier clientIdentifier;
   @Deprecated public java.util.List<java.lang.CharSequence> employeeNames;
-  @Deprecated public com.battybuilds.kafkastreams.avro.model.Active active;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -68,13 +67,11 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
    * @param requestTime The new value for requestTime
    * @param clientIdentifier The new value for clientIdentifier
    * @param employeeNames The new value for employeeNames
-   * @param active The new value for active
    */
-  public AvroHttpRequest(java.lang.Long requestTime, com.battybuilds.kafkastreams.avro.model.ClientIdentifier clientIdentifier, java.util.List<java.lang.CharSequence> employeeNames, com.battybuilds.kafkastreams.avro.model.Active active) {
+  public AvroHttpRequest(java.lang.Long requestTime, com.battybuilds.kafkastreams.avro.model.ClientIdentifier clientIdentifier, java.util.List<java.lang.CharSequence> employeeNames) {
     this.requestTime = requestTime;
     this.clientIdentifier = clientIdentifier;
     this.employeeNames = employeeNames;
-    this.active = active;
   }
 
   public org.apache.avro.Schema getSchema() { return SCHEMA$; }
@@ -84,7 +81,6 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
     case 0: return requestTime;
     case 1: return clientIdentifier;
     case 2: return employeeNames;
-    case 3: return active;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -96,7 +92,6 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
     case 0: requestTime = (java.lang.Long)value$; break;
     case 1: clientIdentifier = (com.battybuilds.kafkastreams.avro.model.ClientIdentifier)value$; break;
     case 2: employeeNames = (java.util.List<java.lang.CharSequence>)value$; break;
-    case 3: active = (com.battybuilds.kafkastreams.avro.model.Active)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -150,22 +145,6 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
   }
 
   /**
-   * Gets the value of the 'active' field.
-   * @return The value of the 'active' field.
-   */
-  public com.battybuilds.kafkastreams.avro.model.Active getActive() {
-    return active;
-  }
-
-  /**
-   * Sets the value of the 'active' field.
-   * @param value the value to set.
-   */
-  public void setActive(com.battybuilds.kafkastreams.avro.model.Active value) {
-    this.active = value;
-  }
-
-  /**
    * Creates a new AvroHttpRequest RecordBuilder.
    * @return A new AvroHttpRequest RecordBuilder
    */
@@ -201,7 +180,6 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
     private com.battybuilds.kafkastreams.avro.model.ClientIdentifier clientIdentifier;
     private com.battybuilds.kafkastreams.avro.model.ClientIdentifier.Builder clientIdentifierBuilder;
     private java.util.List<java.lang.CharSequence> employeeNames;
-    private com.battybuilds.kafkastreams.avro.model.Active active;
 
     /** Creates a new Builder */
     private Builder() {
@@ -229,10 +207,6 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
         this.employeeNames = data().deepCopy(fields()[2].schema(), other.employeeNames);
         fieldSetFlags()[2] = true;
       }
-      if (isValidValue(fields()[3], other.active)) {
-        this.active = data().deepCopy(fields()[3].schema(), other.active);
-        fieldSetFlags()[3] = true;
-      }
     }
 
     /**
@@ -253,10 +227,6 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
       if (isValidValue(fields()[2], other.employeeNames)) {
         this.employeeNames = data().deepCopy(fields()[2].schema(), other.employeeNames);
         fieldSetFlags()[2] = true;
-      }
-      if (isValidValue(fields()[3], other.active)) {
-        this.active = data().deepCopy(fields()[3].schema(), other.active);
-        fieldSetFlags()[3] = true;
       }
     }
 
@@ -411,45 +381,6 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
       return this;
     }
 
-    /**
-      * Gets the value of the 'active' field.
-      * @return The value.
-      */
-    public com.battybuilds.kafkastreams.avro.model.Active getActive() {
-      return active;
-    }
-
-    /**
-      * Sets the value of the 'active' field.
-      * @param value The value of 'active'.
-      * @return This builder.
-      */
-    public com.battybuilds.kafkastreams.avro.model.AvroHttpRequest.Builder setActive(com.battybuilds.kafkastreams.avro.model.Active value) {
-      validate(fields()[3], value);
-      this.active = value;
-      fieldSetFlags()[3] = true;
-      return this;
-    }
-
-    /**
-      * Checks whether the 'active' field has been set.
-      * @return True if the 'active' field has been set, false otherwise.
-      */
-    public boolean hasActive() {
-      return fieldSetFlags()[3];
-    }
-
-
-    /**
-      * Clears the value of the 'active' field.
-      * @return This builder.
-      */
-    public com.battybuilds.kafkastreams.avro.model.AvroHttpRequest.Builder clearActive() {
-      active = null;
-      fieldSetFlags()[3] = false;
-      return this;
-    }
-
     @Override
     @SuppressWarnings("unchecked")
     public AvroHttpRequest build() {
@@ -462,7 +393,6 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
           record.clientIdentifier = fieldSetFlags()[1] ? this.clientIdentifier : (com.battybuilds.kafkastreams.avro.model.ClientIdentifier) defaultValue(fields()[1]);
         }
         record.employeeNames = fieldSetFlags()[2] ? this.employeeNames : (java.util.List<java.lang.CharSequence>) defaultValue(fields()[2]);
-        record.active = fieldSetFlags()[3] ? this.active : (com.battybuilds.kafkastreams.avro.model.Active) defaultValue(fields()[3]);
         return record;
       } catch (java.lang.Exception e) {
         throw new org.apache.avro.AvroRuntimeException(e);

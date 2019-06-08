@@ -31,17 +31,6 @@
         "items": "string"
       },
       "default": null
-    },
-    {
-      "name": "active",
-      "type": {
-        "type": "enum",
-        "name": "Active",
-        "symbols": [
-          "YES",
-          "NO"
-        ]
-      }
     }
   ]
 }
