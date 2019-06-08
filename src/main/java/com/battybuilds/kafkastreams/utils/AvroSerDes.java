@@ -1,4 +1,4 @@
-package com.battybuilds.kafkastreams;
+package com.battybuilds.kafkastreams.utils;
 
 import com.battybuilds.kafkastreams.avro.model.AvroHttpRequest;
 import org.apache.avro.io.*;

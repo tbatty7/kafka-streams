@@ -1,4 +1,4 @@
-package com.battybuilds.kafkastreams;
+package com.battybuilds.kafkastreams.utils;
 
 import org.apache.avro.Schema;
 import org.apache.avro.SchemaBuilder;

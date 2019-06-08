@@ -1,8 +1,7 @@
-package com.battybuilds.kafkastreams;
+package com.battybuilds.kafkastreams.utils;
 
+import com.battybuilds.kafkastreams.utils.AvroSchemaBuilder;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 public class AvroSchemaBuilderTest {
 
