@@ -4,10 +4,12 @@ import com.battybuilds.kafkastreams.avro.model.AvroHttpRequest;
 import org.apache.avro.io.*;
 import org.apache.avro.specific.SpecificDatumReader;
 import org.apache.avro.specific.SpecificDatumWriter;
+import org.springframework.stereotype.Component;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
+@Component
 public class AvroSerDes {
 
     public byte[] serializeAvroHttpRequest(AvroHttpRequest request) {
