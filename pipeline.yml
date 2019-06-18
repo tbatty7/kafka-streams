@@ -10,18 +10,18 @@ jobs:
     plan:
       - get: app-resource
       - task:
-          config:
-            platform: linux
-            image_resource:
-              type: docker-image
-              source: { repository: localhost:5000/java8 }
-            inputs:
-              - name: app-resource
-            run:
-              path: bash
-              args:
-                - -c
-                - |
-                  ls -a
-                  cd app-resource
-                  ./gradlew test
+        config:
+          platform: linux
+          image_resource:
+            type: docker-image
+            source: { repository: localhost:5000/java8 }
+          inputs:
+            - name: app-resource
+          run:
+            path: bash
+            args:
+              - -c
+              - |
+                ls -a
+                cd app-resource
+                ./gradlew test
