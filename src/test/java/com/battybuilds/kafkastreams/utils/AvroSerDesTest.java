@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import static com.battybuilds.kafkastreams.utils.RequestUtils.createAvroHttpRequest;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class AvroSerDesTest {
 
@@ -12,11 +13,20 @@ public class AvroSerDesTest {
     private AvroSerDes avroSerDes = new AvroSerDes();
 
     @Test
-    public void canSerializeRequestToByteArray() {
+    public void canSerializeRequestToJsonByteArray() {
         AvroHttpRequest request = createAvroHttpRequest();
         byte[] bytes = avroSerDes.serializeJson(request);
         String expectedJSON = "{\"requestTime\":10,\"clientIdentifier\":{\"hostName\":\"hostName\",\"ipAddress\":\"127.0.0.1\"},\"employeeNames\":[\"Tim\",\"Jessica\",\"Mike\"]}";
         assertEquals(expectedJSON, new String(bytes));
+    }
+
+    @Test
+    public void canSerializeRequestToBinaryByteArray() {
+        AvroHttpRequest request = createAvroHttpRequest();
+        byte[] serializedRequest = avroSerDes.serializeBinary(request);
+        String result = new String(serializedRequest);
+        assertTrue(result.contains("127.0.0.1"));
+        assertTrue(result.contains("Tim"));
     }
 
     @Test
