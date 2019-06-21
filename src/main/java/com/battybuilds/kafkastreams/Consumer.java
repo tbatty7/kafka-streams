@@ -20,7 +20,7 @@ public class Consumer {
         AvroHttpRequest request = serDes.deserializeBinary(messageRequest);
         System.out.println("****************MESSAGE RECEIVED BELOW***************************");
         System.out.println(new String(messageRequest));
-
+        DataStore.setValue(request.toString());
         System.out.println(request.toString());
     }
 }
