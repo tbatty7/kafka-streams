@@ -4,6 +4,7 @@ import com.battybuilds.kafkastreams.avro.model.AvroHttpRequest;
 import com.battybuilds.kafkastreams.avro.model.ClientIdentifier;
 import com.battybuilds.kafkastreams.utils.AvroSerDes;
 import com.battybuilds.kafkastreams.utils.RequestUtils;
+import org.apache.avro.Schema;
 import org.apache.avro.generic.GenericRecord;
 import org.apache.kafka.common.record.RecordsUtil;
 import org.junit.Test;
@@ -34,5 +35,12 @@ public class SpecificRecordTests {
         byte[] serializedRecord = avroSerDes.serializeBinary(record);
         GenericRecord deserializedRecord = avroSerDes.deserializeBinaryToGeneric(serializedRecord);
         System.out.println("Deserialized as GenericRecord\n" + deserializedRecord);
+    }
+
+    @Test
+    public void getSchemaFromSpecificRecord() {
+        AvroHttpRequest record = RequestUtils.createAvroHttpRequest();
+        Schema schema = record.getSchema();
+        System.out.println(schema);
     }
 }

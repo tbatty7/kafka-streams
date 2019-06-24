@@ -13,12 +13,14 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 
+import static org.junit.Assert.assertEquals;
+
 public class GenericRecordTests {
 
     private AvroSerDes avroSerDes = new AvroSerDes();
 
     @Test
-    public void createGenericRecord() {
+    public void canCreateGenericRecord() {
         Schema schema = getSchema();
         GenericRecord record = createGenericRecord(schema);
         System.out.println("Full record");
@@ -32,6 +34,15 @@ public class GenericRecordTests {
         byte[] serializedGenericRecord = avroSerDes.serializeBinaryFromGeneric(genericRecord);
         AvroHttpRequest deserializedRecord = avroSerDes.deserializeBinary(serializedGenericRecord);
         System.out.println(deserializedRecord);
+    }
+
+    @Test
+    public void getSchemaFromGenericRecord() {
+        Schema schema = getSchema();
+        GenericRecord genericRecord = createGenericRecord(schema);
+        Schema obtainedSchema = genericRecord.getSchema();
+        System.out.println("Schema from Record\n" + obtainedSchema);
+        assertEquals(schema, obtainedSchema);
     }
 
     private GenericRecord createGenericRecord(Schema schema) {
