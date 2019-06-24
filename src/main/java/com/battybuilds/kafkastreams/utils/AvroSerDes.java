@@ -1,12 +1,17 @@
 package com.battybuilds.kafkastreams.utils;
 
 import com.battybuilds.kafkastreams.avro.model.AvroHttpRequest;
+import org.apache.avro.Schema;
+import org.apache.avro.generic.GenericData;
+import org.apache.avro.generic.GenericDatumReader;
+import org.apache.avro.generic.GenericRecord;
 import org.apache.avro.io.*;
 import org.apache.avro.specific.SpecificDatumReader;
 import org.apache.avro.specific.SpecificDatumWriter;
 import org.springframework.stereotype.Component;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 
 @Component
@@ -69,6 +74,29 @@ public class AvroSerDes {
             return employeeReader.read(null, decoder);
         } catch (IOException e) {
             System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
+    public GenericRecord deserializeBinaryToGeneric(byte[] serializedRecord) {
+        Schema.Parser parser = new Schema.Parser();
+        Schema schema = null;
+        try {
+            schema = parser.parse(new File("src/main/resources/avroHttpRequest-schema.avsc"));
+            System.out.println("Schema");
+            System.out.println(schema.toString());
+        } catch (
+                IOException e) {
+            e.printStackTrace();
+        }
+
+        DatumReader<GenericRecord> genericReader = new GenericDatumReader<>(schema);
+        BinaryDecoder decoder = DecoderFactory.get()
+                .binaryDecoder(serializedRecord, null);
+        try {
+            return genericReader.read(null, decoder);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return null;
     }
