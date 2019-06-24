@@ -12,6 +12,6 @@ public interface MessageStreams {
      @Input
      MessageChannel streamOne();
 
-     @Output(MessageStreams.OUTPUT_STREAM)
+     @Output(OUTPUT_STREAM)
      MessageChannel outputStream();
 }
