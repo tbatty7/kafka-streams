@@ -12,5 +12,6 @@ public class IntegrationTest {
         ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
         System.out.println(response.getStatusCode());
         System.out.println(response.getBody());
+        System.out.println(response.getHeaders());
     }
 }
