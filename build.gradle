@@ -40,6 +40,9 @@ repositories {
 	maven { url "https://repo.spring.io/milestone" }
 }
 
+bootRun {
+	systemProperties System.properties
+}
 
 ext {
 	springCloudVersion = 'Greenwich.M3'
@@ -61,7 +64,7 @@ dependencies {
 	implementation('com.fasterxml.jackson.datatype:jackson-datatype-jdk8')
 	implementation('com.fasterxml.jackson.datatype:jackson-datatype-joda')
 	implementation('com.fasterxml.jackson.datatype:jackson-datatype-jsr310')
-	
+
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
 	testImplementation('org.springframework.cloud:spring-cloud-stream-test-support')
 	testImplementation('org.springframework.kafka:spring-kafka-test')
