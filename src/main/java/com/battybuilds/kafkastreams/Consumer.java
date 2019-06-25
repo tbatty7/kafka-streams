@@ -26,6 +26,20 @@ public class Consumer {
         System.out.println(request.toString());
         System.out.println("Message Headers\n" + headers);
         System.out.println("---------EntrySet:  " + headers.entrySet());
+        System.out.println("--------kafka_offset:  " + headers.get("kafka_offset"));
+        System.out.println("--------scst_nativeHeadersPresent:  " + headers.get("scst_nativeHeadersPresent"));
         System.out.println("--------Consumer:  " + headers.get("kafka_consumer"));
+        System.out.println("--------deliveryAttempt:  " + headers.get("deliveryAttempt"));
+        System.out.println("--------kafka_timestampType:  " + headers.get("kafka_timestampType"));
+        System.out.println("--------kafka_receivedMessageKey:  " + headers.get("kafka_receivedMessageKey"));
+        System.out.println("--------kafka_receivedPartitionId:  " + headers.get("kafka_receivedPartitionId"));
+        System.out.println("--------contentType:  " + headers.get("contentType"));
+        System.out.println("--------kafka_receivedTopic:  " + headers.get("kafka_receivedTopic"));
+        System.out.println("--------kafka_receivedTimestamp:  " + headers.get("kafka_receivedTimestamp"));
+        System.out.println("--------ErrorChannel: " + headers.getErrorChannel());
+        System.out.println("--------Id: " + headers.getId());
+        System.out.println("--------ReplyChannel: " + headers.getReplyChannel());
+        System.out.println("--------TimeStamp: " + headers.getTimestamp());
+        System.out.println("--------KeySet: " + headers.keySet());
     }
 }
