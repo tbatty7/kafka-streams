@@ -18,13 +18,13 @@ public class SpecificRecordTests {
     @Test
     public void createSpecificRecord() {
         ClientIdentifier clientIdentifier = ClientIdentifier.newBuilder()
-                .setIpAddress("122.2.22.222")
+                .setIpAddress("127.0.0.1")
                 .setHostName("welcome to my party")
                 .build();
         AvroHttpRequest request = AvroHttpRequest.newBuilder()
                 .setClientIdentifier(clientIdentifier)
-                .setEmployeeNames(Arrays.asList("Tim", "Bobby", "Bill"))
-                .setRequestTime(54L)
+                .setEmployeeNames(Arrays.asList("Tim", "Robert", "Bill"))
+                .setRequestTime(10L)
                 .build();
         System.out.println(request);
     }

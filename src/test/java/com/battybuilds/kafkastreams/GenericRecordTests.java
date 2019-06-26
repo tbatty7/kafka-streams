@@ -47,7 +47,7 @@ public class GenericRecordTests {
 
     private GenericRecord createGenericRecord(Schema schema) {
         GenericRecordBuilder builder = new GenericRecordBuilder(schema.getField("clientIdentifier").schema());
-        GenericRecord clientIdentifier = builder.set("hostName", "hostname")
+        GenericRecord clientIdentifier = builder.set("hostName", "welcome to my party")
                 .set("ipAddress", "127.0.0.1")
                 .build();
 
