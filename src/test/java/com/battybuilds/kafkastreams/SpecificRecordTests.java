@@ -30,7 +30,7 @@ public class SpecificRecordTests {
     }
 
     @Test
-    public void specificRecordCanBeDeserializedAsGenericRecord() {
+    public void canDeserializeSpecificRecordAsGenericRecord() {
         AvroHttpRequest record = RequestUtils.createAvroHttpRequest();
         byte[] serializedRecord = avroSerDes.serializeBinary(record);
         GenericRecord deserializedRecord = avroSerDes.deserializeBinaryToGeneric(serializedRecord);

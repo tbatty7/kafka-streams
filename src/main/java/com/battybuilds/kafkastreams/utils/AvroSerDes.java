@@ -69,11 +69,11 @@ public class AvroSerDes {
     }
 
     public AvroHttpRequest deserializeBinary(byte[] data) {
-        DatumReader<AvroHttpRequest> employeeReader = new SpecificDatumReader<>(AvroHttpRequest.class);
+        DatumReader<AvroHttpRequest> specificReader = new SpecificDatumReader<>(AvroHttpRequest.class);
         Decoder decoder = DecoderFactory.get()
                 .binaryDecoder(data, null);
         try {
-            return employeeReader.read(null, decoder);
+            return specificReader.read(null, decoder);
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
