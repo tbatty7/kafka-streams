@@ -4,21 +4,18 @@ import com.battybuilds.kafkastreams.avro.model.AvroHttpRequest;
 import com.battybuilds.kafkastreams.avro.model.ClientIdentifier;
 import com.battybuilds.kafkastreams.utils.AvroSerDes;
 import com.battybuilds.kafkastreams.utils.MessageStreams;
-import org.apache.avro.Schema;
-import org.apache.avro.generic.GenericRecordBuilder;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.context.annotation.Profile;
 import org.springframework.integration.support.MessageBuilder;
+import org.springframework.messaging.Message;
 import org.springframework.messaging.MessageChannel;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.ws.rs.Produces;
-import java.io.File;
-import java.io.IOException;
 import java.util.Arrays;
 
 @RestController
+@Profile("test")
 @EnableBinding(MessageStreams.class)
 public class ProducerController {
 
@@ -35,8 +32,9 @@ public class ProducerController {
         AvroHttpRequest request = createAvroHttpRequest();
 
 
-        byte[] serializedRequest = serDes.serializeBinary(request);
-        outputChannel.send(MessageBuilder.withPayload(serializedRequest).build());
+        byte[] serializedRequest = serDes.serializeBinaryFromSpecific(request);
+        Message<byte[]> messageWithPayload = MessageBuilder.withPayload(serializedRequest).build();
+        outputChannel.send(messageWithPayload);
         System.out.println("Message Sent!");
 
         for (int i = 0; i < 100000; i++) {

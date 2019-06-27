@@ -2,7 +2,6 @@ package com.battybuilds.kafkastreams.utils;
 
 import com.battybuilds.kafkastreams.avro.model.AvroHttpRequest;
 import org.apache.avro.Schema;
-import org.apache.avro.generic.GenericData;
 import org.apache.avro.generic.GenericDatumReader;
 import org.apache.avro.generic.GenericDatumWriter;
 import org.apache.avro.generic.GenericRecord;
@@ -37,6 +36,10 @@ public class AvroSerDes {
         return data;
     }
 
+    // Is this the correct message Converter? - No, need dependency
+//    public MessageConverter myMessageConverter() {
+//        return new AvroSchemaMessageConverter(MimeType.valueOf("avro/bytes"));
+//    }
 
     public AvroHttpRequest deserializeJson(byte[] message) {
         DatumReader<AvroHttpRequest> reader = new SpecificDatumReader<>(AvroHttpRequest.class);
@@ -51,15 +54,15 @@ public class AvroSerDes {
         }
     }
 
-    public byte[] serializeBinary(AvroHttpRequest request) {
+    public byte[] serializeBinaryFromSpecific(AvroHttpRequest specificRecord) {
         DatumWriter<AvroHttpRequest> writer = new SpecificDatumWriter<>(AvroHttpRequest.class);
         byte[] data = new byte[0];
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        Encoder jsonEncoder = EncoderFactory.get()
+        Encoder binaryEncoder = EncoderFactory.get()
                 .binaryEncoder(stream, null);
         try {
-            writer.write(request, jsonEncoder);
-            jsonEncoder.flush();
+            writer.write(specificRecord, binaryEncoder);
+            binaryEncoder.flush();
             data = stream.toByteArray();
         } catch (IOException e) {
             System.out.println(e.getMessage());
@@ -68,12 +71,13 @@ public class AvroSerDes {
         return data;
     }
 
-    public AvroHttpRequest deserializeBinary(byte[] data) {
+    public AvroHttpRequest deserializeBinaryToSpecific(byte[] data) {
         DatumReader<AvroHttpRequest> specificReader = new SpecificDatumReader<>(AvroHttpRequest.class);
         Decoder decoder = DecoderFactory.get()
                 .binaryDecoder(data, null);
         try {
-            return specificReader.read(null, decoder);
+            AvroHttpRequest avroHttpRequest = specificReader.read(null, decoder);
+            return avroHttpRequest;
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
@@ -87,7 +91,8 @@ public class AvroSerDes {
         BinaryDecoder decoder = DecoderFactory.get()
                 .binaryDecoder(serializedRecord, null);
         try {
-            return genericReader.read(null, decoder);
+            GenericRecord genericRecord = genericReader.read(null, decoder);
+            return genericRecord;
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -114,11 +119,11 @@ public class AvroSerDes {
         DatumWriter<GenericRecord> writer = new GenericDatumWriter<>(schema);
         byte[] data = new byte[0];
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        Encoder jsonEncoder = EncoderFactory.get()
+        Encoder binaryEncoder = EncoderFactory.get()
                 .binaryEncoder(stream, null);
         try {
-            writer.write(genericRecord, jsonEncoder);
-            jsonEncoder.flush();
+            writer.write(genericRecord, binaryEncoder);
+            binaryEncoder.flush();
             data = stream.toByteArray();
         } catch (IOException e) {
             System.out.println(e.getMessage());

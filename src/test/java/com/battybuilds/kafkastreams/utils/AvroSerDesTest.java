@@ -23,7 +23,7 @@ public class AvroSerDesTest {
     @Test
     public void canSerializeRequestToBinaryByteArray() {
         AvroHttpRequest request = createAvroHttpRequest();
-        byte[] serializedRequest = avroSerDes.serializeBinary(request);
+        byte[] serializedRequest = avroSerDes.serializeBinaryFromSpecific(request);
         String result = new String(serializedRequest);
         assertTrue(result.contains("127.0.0.1"));
         assertTrue(result.contains("Tim"));
@@ -42,8 +42,8 @@ public class AvroSerDesTest {
     @Test
     public void canDeserializeFromBinary() {
         AvroHttpRequest request = createAvroHttpRequest();
-        byte[] serializedMessage = avroSerDes.serializeBinary(request);
-        AvroHttpRequest deserializedRequest = avroSerDes.deserializeBinary(serializedMessage);
+        byte[] serializedMessage = avroSerDes.serializeBinaryFromSpecific(request);
+        AvroHttpRequest deserializedRequest = avroSerDes.deserializeBinaryToSpecific(serializedMessage);
         assertEquals(request, deserializedRequest);
     }
 

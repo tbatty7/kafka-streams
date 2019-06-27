@@ -19,7 +19,9 @@ public class Consumer {
 
     @StreamListener(MessageStreams.STREAM_ONE)
     public void streamHandler(byte[] messageRequest, @Headers MessageHeaders headers) {
-        AvroHttpRequest request = serDes.deserializeBinary(messageRequest);
+        AvroHttpRequest request = serDes.deserializeBinaryToSpecific(messageRequest);
+
+
         System.out.println("****************MESSAGE RECEIVED BELOW***************************");
         System.out.println(new String(messageRequest));
         DataStore.setValue(request.toString());
