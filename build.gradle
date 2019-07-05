@@ -65,11 +65,13 @@ dependencies {
 	implementation('com.fasterxml.jackson.datatype:jackson-datatype-joda')
 	implementation('com.fasterxml.jackson.datatype:jackson-datatype-jsr310')
 	implementation('org.springframework.boot:spring-boot-starter-data-mongodb')
-	
+
 	testImplementation('de.flapdoodle.embed:de.flapdoodle.embed.mongo')
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
 	testImplementation('org.springframework.cloud:spring-cloud-stream-test-support')
 	testImplementation('org.springframework.kafka:spring-kafka-test')
+	testImplementation('org.junit.jupiter:junit-jupiter-engine')
+
 }
 
 dependencyManagement {
