@@ -23,7 +23,7 @@ public class Consumer {
 
 
         System.out.println("****************MESSAGE RECEIVED BELOW***************************");
-        System.out.println(new String(messageRequest));
+//        System.out.println(new String(messageRequest));  This caused all the following sysouts to be in gibberish
         DataStore.setValue(request.toString());
         System.out.println(request.toString());
         System.out.println("Message Headers\n" + headers);

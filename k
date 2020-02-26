@@ -1,0 +1,353 @@
+[33mcommit 21a84d1fe47d2722ba198f2e51ae108b50c5c941[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: Tim B <tbatty7@gmail.com>
+Date:   Fri Jul 5 11:20:55 2019 -0400
+
+    added tests using embedded Mongo db
+
+[33mcommit 77f0275b5b5160b699e1921025dbfb0186a1d096[m
+Author: Tim B <tbatty7@gmail.com>
+Date:   Thu Jun 27 10:39:35 2019 -0400
+
+    refactored code, restricted controller to only run in test profile, changed port#
+
+[33mcommit 7cf73a797ef3c16f31b303598a20087181b4d378[m
+Author: Tim B <tbatty7@gmail.com>
+Date:   Wed Jun 26 09:28:31 2019 -0400
+
+    more refactoring
+
+[33mcommit 5e3ae49cdf6be98c64af56ede734ccacae86a23e[m
+Author: Tim B <tbatty7@gmail.com>
+Date:   Wed Jun 26 09:20:26 2019 -0400
+
+    made tests for createGenericRecord and createSpecificRecord match
+
+[33mcommit ec6b7ca527d603220e3c8373204c6a682d2f99dc[m
+Author: Tim B <tbatty7@gmail.com>
+Date:   Tue Jun 25 12:07:48 2019 -0400
+
+    can now set spring profile from command line with -Pspring.profiles.active=test
+
+[33mcommit 6fa288bfe372bd31c396a5c960c8b849b4951129[m
+Author: Tim B <tbatty7@gmail.com>
+Date:   Tue Jun 25 10:24:08 2019 -0400
+
+    grabbing everything interesting from headers
+
+[33mcommit f3cf29c0ff22fb656004fcb1b98b72048a275d1a[m
+Author: Tim B <tbatty7@gmail.com>
+Date:   Tue Jun 25 10:22:51 2019 -0400
+
+    setting up to use Spring Profiles
+
+[33mcommit f4b5b72a11138560ca54fecb8c38d3436b1aec6a[m
+Author: Tim B <tbatty7@gmail.com>
+Date:   Mon Jun 24 20:18:40 2019 -0400
+
+    added code to see headers
+
+[33mcommit 103aba1dfa9c9d37cfd863e19b9db4c1cbc7ce7e[m
+Author: Tim B <tbatty7@gmail.com>
+Date:   Mon Jun 24 12:36:35 2019 -0400
+
+    verified I can get a schema from Generic or Specific Records
+
+[33mcommit 8c0206ea6abe11d9fd37a876184ece7a32cbaa4d[m
+Author: Tim B <tbatty7@gmail.com>
+Date:   Mon Jun 24 12:19:19 2019 -0400
+
+    created integration test that works with REST endpoint I created that produces message.  App has to be running seperately with local kafka for this test to work
+
+[33mcommit 8af2cbe1ff07f4f927b89ab724f681d53b91dea6[m
+Author: Tim B <tbatty7@gmail.com>
+Date:   Mon Jun 24 12:07:27 2019 -0400
+
+    proved you can have a publisher send a GenericRecord and the consumer can deserialize it as a Specific Record
+
+[33mcommit d4fd27b69dd3acce0e71227050d2398465ec7aa2[m
+Author: Tim B <tbatty7@gmail.com>
+Date:   Mon Jun 24 11:13:29 2019 -0400
+
+    proved you can make a consumer that receives serialized Specific Records and deserializes them to Generic Records
+
+[33mcommit 6a41887cf4f5b62a245586054b05695852bab5bb[m
+Author: Tim B <tbatty7@gmail.com>
+Date:   Mon Jun 24 10:25:55 2019 -0400
+
+    refactored stuff
+
+[33mcommit d73664e70081dff7c75c059cc097b512694185aa[m
+Author: Tim B <tbatty7@gmail.com>
+Date:   Mon Jun 24 10:11:29 2019 -0400
+
+    added tests showing how to create a generic vs a specific record
+
+[33mcommit 8f8e090cef3b62e952e8e16a049716dc97d6cba8[m
+Author: Tim B <tbatty7@gmail.com>
+Date:   Fri Jun 21 09:32:50 2019 -0400
+
+    started shell script to run inside docker container for Concourse
+
+[33mcommit 4b91880b57e4b0290e9ffb6e800ddbd2476857c7[m
+Author: Tim B <tbatty7@gmail.com>
+Date:   Fri Jun 21 09:32:27 2019 -0400
+
+    modified properties for app to work in docker container with Kafka spun up inside it.
+
+[33mcommit 37cb364797842fb67e124b314ad3472c2d8646ba[m
+Author: Tim B <tbatty7@gmail.com>
+Date:   Fri Jun 21 09:28:49 2019 -0400
+
+    modified code so I can assert on response with integration test
+
+[33mcommit 35f54522b9cc0eedd92888850e6ecdf0d97a72f7[m
+Author: Tim B <tbatty7@gmail.com>
+Date:   Wed Jun 19 09:57:19 2019 -0400
+
+    added test for binary avro serializer
+
+[33mcommit 2f595fa2bf0ed946d7e7df48abaa1066758d0144[m
+Author: osboxes.org <osboxes@osboxes.attlocal.net>
+Date:   Wed Jun 19 00:41:13 2019 +0000
+
+    fixed gradlew file permissions with chmod from ubuntu VM
+
+[33mcommit 71cda2534f45f78677af7dad771b2bf99b04201b[m
+Author: Tim B <tbatty7@gmail.com>
+Date:   Tue Jun 18 20:38:22 2019 -0400
+
+    tweaked docker image details to make it work with my personal DockerHub
+
+[33mcommit be98d3a770666d126067ab2cf1584ac452147f92[m
+Author: Tim B <tbatty7@gmail.com>
+Date:   Tue Jun 18 12:56:58 2019 -0400
+
+    changed url from localhost to ip for my DockerHub container
+
+[33mcommit 6f16192cd8c2ad9023e8792d30f5f0692256ef46[m
+Author: Tim B <tbatty7@gmail.com>
+Date:   Tue Jun 18 12:19:52 2019 -0400
+
+    still trying to get pipeline to import, by extracting task out of pipeline file
+
+[33mcommit 92243a9e166fb14fe3b12ca9039ee8ec2063783a[m
+Author: Tim B <tbatty7@gmail.com>
+Date:   Tue Jun 18 11:41:43 2019 -0400
+
+    trying to fix mysterious invalid : by moving things around in YAML file
+
+[33mcommit ea954b0d9e68ef06a1dff8c3cccb63ab0d11af89[m
+Author: Tim B <tbatty7@gmail.com>
+Date:   Tue Jun 18 11:36:52 2019 -0400
+
+    fixed spacing in yaml file
+
+[33mcommit 7c11c676217dc8975d371db06f44aa565eecfa1e[m
+Author: Tim B <tbatty7@gmail.com>
+Date:   Tue Jun 18 11:18:27 2019 -0400
+
+    created file for new tests for Consumer
+
+[33mcommit ee652a43912f5ff7b34d0654a9db49059823c1c7[m
+Author: Tim B <tbatty7@gmail.com>
+Date:   Tue Jun 18 11:18:03 2019 -0400
+
+    refactored integration test to ready it for possible integration tests to detect topics wired up correctly
+
+[33mcommit 929cbaedcd45c0b07aba5ed94570a7755488a9f8[m
+Author: Tim B <tbatty7@gmail.com>
+Date:   Tue Jun 18 11:15:42 2019 -0400
+
+    changed port it runs on
+
+[33mcommit 7960ffcf3439ef9de82a40a942e7345a6b2b8975[m
+Author: Tim B <tbatty7@gmail.com>
+Date:   Tue Jun 18 11:14:15 2019 -0400
+
+    added Concourse pipeline version 1
+
+[33mcommit d354f7fcb09dae89a5be51af79ee36b18d7ed37d[m
+Author: Tim B <tbatty7@gmail.com>
+Date:   Fri Jun 7 23:21:30 2019 -0400
+
+    autowired deserializer into constructor
+
+[33mcommit e8d244270bb254d0ba840c5c5235f9967f3f86f6[m
+Author: Tim B <tbatty7@gmail.com>
+Date:   Fri Jun 7 23:18:12 2019 -0400
+
+    added back annotation because it might be important
+
+[33mcommit d3565626ef5a296783a4dc4378ed6d9e072f5a45[m
+Author: Tim B <tbatty7@gmail.com>
+Date:   Fri Jun 7 22:58:08 2019 -0400
+
+    refactored tests
+
+[33mcommit 3e1cdedf9d1ad8088472f833ef99d64b86c893e5[m
+Author: Tim B <tbatty7@gmail.com>
+Date:   Fri Jun 7 22:57:17 2019 -0400
+
+    removed unneccessary annotation from producer
+
+[33mcommit 1655c757eb11fd57d02b1e20f9b98c926c997728[m
+Author: Tim B <tbatty7@gmail.com>
+Date:   Fri Jun 7 22:01:04 2019 -0400
+
+    autowired individual channel to Producer instead of MessageStreams interface/object
+
+[33mcommit 558e9181b0e34e52f948d6b698689ec2ba0e79a8[m
+Author: Tim B <tbatty7@gmail.com>
+Date:   Fri Jun 7 21:36:05 2019 -0400
+
+    refactored some more
+
+[33mcommit 8cbb78badd91dcbce8e239af3d6c0f4708a57773[m
+Author: Tim B <tbatty7@gmail.com>
+Date:   Fri Jun 7 21:27:27 2019 -0400
+
+    added assertion to schema builder test
+
+[33mcommit 46915ca446ddeb052a3d238a067620f81299be49[m
+Author: Tim B <tbatty7@gmail.com>
+Date:   Fri Jun 7 21:24:09 2019 -0400
+
+    reorganized where classes live
+
+[33mcommit a9f3090fa5a993f58434d8d6bade79262f9c20e2[m
+Author: Tim B <tbatty7@gmail.com>
+Date:   Fri Jun 7 21:13:58 2019 -0400
+
+    passed real Avro object into producer, sent it to Kafka, and successfully received and deserialized it!
+
+[33mcommit b6ef3ac718753c411898bbdd61b58cadfe9b1210[m
+Author: Tim B <tbatty7@gmail.com>
+Date:   Fri Jun 7 21:08:11 2019 -0400
+
+    moved AvroSerDesTest to correct package
+
+[33mcommit 47d31764e9aa4d13c46f8c5c86249ce73ab3aba7[m
+Author: Tim B <tbatty7@gmail.com>
+Date:   Fri Jun 7 21:05:01 2019 -0400
+
+    fixed autowiring by making AvroSerDes a bean
+
+[33mcommit 7ebfa0ca2a4a6860a0f77d87789605f4f10a7aef[m
+Author: Tim B <tbatty7@gmail.com>
+Date:   Fri Jun 7 21:03:45 2019 -0400
+
+    wired up serializer with request correctly but with null request object
+
+[33mcommit f785bca3de4fb7ec49ea0fb48fd4284ee9185a32[m
+Author: Tim B <tbatty7@gmail.com>
+Date:   Fri Jun 7 20:59:40 2019 -0400
+
+    autowired AvroSerDes to constructor after making it a bean
+
+[33mcommit 9bbd2ac45c26ef14f49e09f321ca8beb7b97e25f[m
+Author: Tim B <tbatty7@gmail.com>
+Date:   Fri Jun 7 20:58:06 2019 -0400
+
+    moved AvroSerDesTest to correct package
+
+[33mcommit 1a9816a76d1708be41c1c84fab703ad01a707a80[m
+Author: Tim B <tbatty7@gmail.com>
+Date:   Fri Jun 7 20:56:05 2019 -0400
+
+    moved AvroSerDes out of the generated classes package and deleted old enum class
+
+[33mcommit a7a742e2e8ba878698d6ab0b5ead0de8a60f378d[m
+Author: Tim B <tbatty7@gmail.com>
+Date:   Fri Jun 7 20:51:00 2019 -0400
+
+    moved field to constructor in ProducerController for easier testing
+
+[33mcommit 8051a26795b1f24b8bde572ddf7d720b8dc2a0c8[m
+Author: Tim B <tbatty7@gmail.com>
+Date:   Fri Jun 7 20:26:12 2019 -0400
+
+    added producer that sends String messages activated by a GET web call to localhost:8080/send
+
+[33mcommit e1cae2f2156d2e04374968a58970fd3d5cf40aa6[m
+Author: Tim B <tbatty7@gmail.com>
+Date:   Fri Jun 7 20:24:44 2019 -0400
+
+    added Spring web dependency to make it a web service
+
+[33mcommit 0caf73304a36bb72202f52a26ef67fec86ef15e3[m
+Author: Tim B <tbatty7@gmail.com>
+Date:   Fri Jun 7 20:24:05 2019 -0400
+
+    added binary deserializer
+
+[33mcommit 29f4b3f77042f755c9752b5a965151fea0b8fb32[m
+Author: Tim B <tbatty7@gmail.com>
+Date:   Fri Jun 7 20:22:10 2019 -0400
+
+    removed Enum from request object to resolve errors with deserialization
+
+[33mcommit aa56aba72bfa33b39257ef513399eb15405ce632[m
+Author: Tim B <tbatty7@gmail.com>
+Date:   Thu Jun 6 14:56:08 2019 -0400
+
+    added deserializer with test
+
+[33mcommit df318c2a796dfdd21a38c00036a6e9d832c940db[m
+Author: Tim B <tbatty7@gmail.com>
+Date:   Thu Jun 6 14:19:17 2019 -0400
+
+    added serializer and test
+
+[33mcommit 905107352846b9953708e8a87f4d87164cc3e22e[m
+Author: Tim B <tbatty7@gmail.com>
+Date:   Thu Jun 6 14:18:44 2019 -0400
+
+    converted input type to byte array to accomodate deserializing
+
+[33mcommit d0451f7ad3f6be21d1dd184a373a6372ef9b4124[m
+Author: Tim B <tbatty7@gmail.com>
+Date:   Thu Jun 6 11:54:03 2019 -0400
+
+    added jackson dependencies needed for Avro
+
+[33mcommit 3521dc679d4f820cbd4211c8979ed02b53b9639c[m
+Author: Tim B <tbatty7@gmail.com>
+Date:   Thu Jun 6 11:04:30 2019 -0400
+
+    generated classes using avro-tools jar as a cli
+
+[33mcommit bedb9d645000cf308dfd7bc3da3046e19df172cc[m
+Author: Tim B <tbatty7@gmail.com>
+Date:   Thu Jun 6 11:03:36 2019 -0400
+
+    created Avro schema by grabbing value from test and putting it in .avsc file
+
+[33mcommit d623b351556e1fb6dd2e6c6e7751acea21843f24[m
+Author: Tim B <tbatty7@gmail.com>
+Date:   Thu Jun 6 11:02:37 2019 -0400
+
+    added util class to generate schema file in json format with test
+
+[33mcommit a076961ed3319ecf1f3003de0a7b43a26f5260f3[m
+Author: Tim B <tbatty7@gmail.com>
+Date:   Thu Jun 6 10:59:17 2019 -0400
+
+    added jar to be used as a cli to generate Avro classes
+
+[33mcommit f09dcab0d448c96406b0f9fb817b740c08f81daf[m
+Author: Tim B <tbatty7@gmail.com>
+Date:   Wed Jun 5 16:12:41 2019 -0400
+
+    added new MessageChannel interface
+
+[33mcommit 16f66647e75a9387bc9d27a971f2723601c37666[m
+Author: Tim B <tbatty7@gmail.com>
+Date:   Wed Jun 5 16:11:41 2019 -0400
+
+    changed topic name
+
+[33mcommit b3cb90ed0e20c6b341cca3dbc4b65611d0ae5542[m
+Author: Tim B <tbatty7@gmail.com>
+Date:   Wed Jun 5 15:51:30 2019 -0400
+
+    initial commit

@@ -20,7 +20,7 @@ public class Junit5MongoTest {
     @DisplayName("Given, When, Then statement")
     @Test
     public void dummy(@Autowired MongoTemplate mongoTemplate) {
-        
+
         // given
         BasicDBObjectBuilder builder = BasicDBObjectBuilder.start();
         DBObject objectToSave = builder.add("key", "value").get();
