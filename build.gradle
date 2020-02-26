@@ -65,6 +65,7 @@ dependencies {
 	implementation('com.fasterxml.jackson.datatype:jackson-datatype-joda')
 	implementation('com.fasterxml.jackson.datatype:jackson-datatype-jsr310')
 	implementation('org.springframework.boot:spring-boot-starter-data-mongodb')
+	implementation('org.springframework.boot:spring-boot-starter-actuator')
 
 	testImplementation('de.flapdoodle.embed:de.flapdoodle.embed.mongo')
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
